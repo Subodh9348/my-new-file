@@ -1,0 +1,145 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Pradyumna!</title>
+  <style>
+    body {
+      margin: 10;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd);
+      background-size: 600% 600%;
+      animation: gradientBG 15s ease infinite;
+      color: #fff;
+      text-align: center;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    h1 {
+      margin-top: 40px;
+      font-size: 3em;
+      color: #fff;
+      text-shadow: 0 0 20px #ffd700, 0 0 30px #ff69b4;
+    }
+
+    .slideshow {
+      position: relative;
+      max-width: 200px;
+      margin: 20px auto;
+    }
+
+    .slides {
+      display: none;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #fff;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 12px 25px;
+      font-size: 18px;
+      background-color: #ffd700;
+      color: black;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #fff;
+    }
+
+    button:hover {
+      background-color: gold;
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 40px;
+      height: 60px;
+      background-color: red;
+      border-radius: 50% 50% 40% 40%;
+      animation: floatBalloon 8s linear infinite;
+    }
+
+    @keyframes floatBalloon {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-120vh); }
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      animation: fall 4s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { top: -10px; }
+      100% { top: 100vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎉 Happy 1st Birthday Pradyumna! 🎂</h1>
+
+  <div class="slideshow">
+    <img class="slides" src="image1.jpg" alt="Slide 1">
+    <img class="slides" src="image2.jpg" alt="Slide 2">
+    <img class="slides" src="image3.jpg" alt="Slide 3">
+    <img class="slides" src="iamge4.jpg" alt="Slide 4">
+    <img class="slides" src="image5.jpg" alt="Slide 5">
+    <img class="slides" src="image6.jpg" alt="Slide 6">
+  </div>
+
+  <button onclick="document.getElementById('bg-music').play()">▶ Play Birthday Song</button>
+  <audio id="bg-music" loop>
+    <source src="birthday.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Slide show
+    let slideIndex = 0;
+    showSlides();
+    function showSlides() {
+      let slides = document.getElementsByClassName("slides");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}
+      slides[slideIndex-1].style.display = "block";
+      setTimeout(showSlides, 3000);
+    }
+
+    // Balloons
+    for (let i = 0; i < 10; i++) {
+      let b = document.createElement("div");
+      b.classList.add("balloon");
+      b.style.left = Math.random() * 100 + "vw";
+      b.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
+      b.style.animationDuration = (6 + Math.random() * 4) + "s";
+      document.body.appendChild(b);
+    }
+
+    // Confetti
+    for (let i = 0; i < 50; i++) {
+      let c = document.createElement("div");
+      c.classList.add("confetti");
+      c.style.left = Math.random() * 100 + "vw";
+      c.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+      c.style.animationDuration = (3 + Math.random() * 2) + "s";
+      c.style.animationDelay = Math.random() * 2 + "s";
+      document.body.appendChild(c);
+    }
+  </script>
+</body>
+</html>
